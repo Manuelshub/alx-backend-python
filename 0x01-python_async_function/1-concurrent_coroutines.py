@@ -20,9 +20,10 @@ async def wait_n(n: int, max_delay: int) -> list:
         list: A list of the random delays for each coroutine.
     """
     lst = []
+    tasks = [wait_random(max_delay) for _ in range(n)]
 
-    for _ in range(n):
-        delay = await wait_random(max_delay)
+    for task in asyncio.as_completed(tasks):
+        delay = await task
         i = 0
         while i < len(lst) and lst[i] < delay:
             i += 1
