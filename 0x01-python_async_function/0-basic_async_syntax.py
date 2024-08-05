@@ -8,7 +8,7 @@ import random
 
 async def wait_random(max_delay: int = 10) -> float:
     """
-    Coroutine that asynchronously wait for a random delay between 0 and max_delay:
+    Asynchronously wait for a random delay between 0 and max_delay:
     Args:
         max_delay(int): Maximum delay with default value 10.
     """
