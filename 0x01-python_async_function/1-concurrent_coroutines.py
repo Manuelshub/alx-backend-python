@@ -19,5 +19,12 @@ async def wait_n(n: int, max_delay: int) -> list:
     Returns:
         list: A list of the random delays for each coroutine.
     """
-    lst = [await wait_random(max_delay) for _ in range(n)]
-    return sorted(lst)
+    lst = []
+
+    for _ in range(n):
+        delay = await wait_random(max_delay)
+        i = 0
+        while i < len(lst) and lst[i] < delay:
+            i += 1
+        lst.insert(i, delay)
+    return lst
