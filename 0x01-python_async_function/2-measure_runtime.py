@@ -4,12 +4,12 @@ This module contains an asynchronous function that measures
 the total execution time of a function
 """
 import asyncio
-from time import perf_counter
+import time
 
 wait_n = __import__('1-concurrent_coroutines').wait_n
 
 
-async def measure_time(n: int, max_delay: int) -> float:
+def measure_time(n: int, max_delay: int) -> float:
     """
     Measures the average runtime of the `wait_n` coroutine.
 
@@ -20,7 +20,7 @@ async def measure_time(n: int, max_delay: int) -> float:
     Returns:
         float: The average runtime of the `wait_n` coroutine in seconds.
     """
-    start = perf_counter()
+    start = time.perf_counter()
     asyncio.run(wait_n(n, max_delay))
-    total_time = perf_counter() - start
+    total_time = time.perf_counter() - start
     return total_time / n
