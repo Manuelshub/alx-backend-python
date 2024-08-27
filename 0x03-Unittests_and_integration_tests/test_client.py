@@ -2,6 +2,8 @@
 """ Test client
 """
 from client import GithubOrgClient
+from parameterized import parameterized
+from unittest.mock import patch
 
 
 class TestGithubOrgClient(unittest.TestCase):
