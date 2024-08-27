@@ -20,6 +20,6 @@ class TestGithubOrgClient(unittest.TestCase):
         """ Test org
         """
         org_test = GithubOrgClient(org)
-        test_responnse = org_test.org
+        test_response = org_test.org
         self.assertEqual(test_response, mock_org.return_value)
         mock_org.assert_called_once()
